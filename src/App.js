@@ -1,10 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import { home } from './components/home';
+//import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    home()
+  );
+}
+
+export default App;
+
+/*
+<div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,7 +28,4 @@ function App() {
         </a>
       </header>
     </div>
-  );
-}
-
-export default App;
+*/
