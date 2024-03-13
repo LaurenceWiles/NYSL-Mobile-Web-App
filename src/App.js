@@ -1,11 +1,34 @@
 import React from 'react';
-import { home } from './components/home';
-//import logo from './logo.svg';
+import { Link, Route, Routes } from 'react-router-dom';
+import { Home } from './components/home';
+import { Schedule } from './components/schedule';
 import './App.css';
+
+const Main = () => {
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/schedule">Schedule</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/schedule" element={<Schedule />} />
+      </Routes>
+    </div>
+  )
+}
 
 const App = () => {
   return (
-    home()
+    <Main />
   );
 }
 
@@ -28,4 +51,12 @@ export default App;
         </a>
       </header>
     </div>
+
+    BrowserRouter>
+        <Routes>
+            <Route path='/' element ={ <Home /> }/>
+            <Route path='/schedule' element={<Schedule />} />
+        </Routes>
+      </BrowserRouter>
+
 */
