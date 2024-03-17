@@ -10,10 +10,31 @@ export const Home = () => {
     return (
         <div>
 			<Container>
-			<h1>Northside Youth Soccer League</h1>
+			<HeadingText />
 			<Picture/>
-			<h2>About NYSL</h2>
-        	<div>
+			<About />
+        	<Contact />
+			</Container>
+        </div>
+    )
+}
+
+
+const Picture = () => {
+  return <Image src={Photo} fluid />;
+}
+
+const HeadingText = () => {
+	return (
+		<div>
+			<h1>Northside Youth Soccer League</h1>
+		</div>
+	)
+}
+
+const About = () => {
+	return (
+			<div className='about-div'>
 			<h3>Mission</h3>
 			<p>To support young athletes living in Chicago's northside
 			neighborhoods, who have an interest in learning and playing
@@ -32,19 +53,15 @@ export const Home = () => {
 			northside neighborhood. NYSL is ran by a small full-time staff, and
 			relies on the generous volunteer time of parents and previous league
 			members.</p>
-			</div>
-        	<div>
+		</div>
+	)
+}
+
+const Contact = () => {
+	return (
+		<div>
 			<p>Please email us at <a href="mailto:nysl@chisoccer.org">nysl@chisoccer.org</a></p>
 			<p id='contact-bottom'>We will reply to your email as soon as we can.</p>
-			</div>
-			</Container>
-        </div>
-    )
+		</div>
+	)
 }
-
-
-
-const Picture = () => {
-  return <Image src={Photo} fluid />;
-}
-
