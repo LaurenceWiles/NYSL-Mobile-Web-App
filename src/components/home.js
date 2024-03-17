@@ -1,12 +1,19 @@
 import React from 'react';
 import { Schedule } from './schedule';
+import { Container } from 'react-bootstrap';
+import Photo from '../utils/asset/design1_image1.jpg';
+import Image from 'react-bootstrap/Image';
+
+
 
 export const Home = () => {
     return (
         <div>
+			<Container>
 			<h1>Northside Youth Soccer League</h1>
-		<h2>About NYSL</h2>
-        <div id="content">
+			<Picture/>
+			<h2>About NYSL</h2>
+        	<div>
 			<h3>Mission</h3>
 			<p>To support young athletes living in Chicago's northside
 			neighborhoods, who have an interest in learning and playing
@@ -25,11 +32,19 @@ export const Home = () => {
 			northside neighborhood. NYSL is ran by a small full-time staff, and
 			relies on the generous volunteer time of parents and previous league
 			members.</p>
-		</div>
-        <div id="content">
+			</div>
+        	<div>
 			<p>Please email us at <a href="mailto:nysl@chisoccer.org">nysl@chisoccer.org</a></p>
 			<p id='contact-bottom'>We will reply to your email as soon as we can.</p>
-		</div>
+			</div>
+			</Container>
         </div>
     )
 }
+
+
+
+const Picture = () => {
+  return <Image src={Photo} fluid />;
+}
+
