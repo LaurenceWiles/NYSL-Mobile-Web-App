@@ -8,6 +8,7 @@ import { Home } from './home';
 import { Schedule } from './schedule';
 import logo from '../utils/asset/nysl_logo.png';
 import Image from 'react-bootstrap/Image';
+import { GameDetails } from './GameDetails';
 
 
 export const Header = () => {
@@ -24,8 +25,8 @@ export const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
           <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/schedule">Schedule</Nav.Link>
-            
+          <Nav.Link as={Link} to="/schedule">Schedule</Nav.Link>
+          <Nav.Link as={Link} to="/GameDetails">Game Deatails</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -33,6 +34,7 @@ export const Header = () => {
     <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/schedule" element={<Schedule />} />
+          <Route path="/GameDetails" element={<GameDetails />} />
         </Routes>
     </div>
   );
