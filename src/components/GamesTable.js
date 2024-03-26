@@ -1,9 +1,15 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom';
+import { GameDetails } from "./GameDetails";
+import { Route, Routes } from 'react-router-dom';
+
+
 
 export const GamesTable = ({ jsonData }) => {
-    const gamesData = Object.values(jsonData.games) || [];
+    const gamesData = Object.entries(jsonData.games) || [];
     return (
+        <div>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -14,16 +20,21 @@ export const GamesTable = ({ jsonData }) => {
           </tr>
         </thead>
         <tbody>
-        {gamesData.map((item, index) => (
-          <tr key={index}>
-            <td>{item.date}</td>
-            <td>{item.time}</td>
-            <td>{item.teams}</td>
-            <td>{item.location}</td>
+        {gamesData.map(([gameID, game]) => (
+        
+          <tr key={gameID}>
+            <td><Link to={{ pathname: `/game/${gameID}`, state: { game } }}>{game.date}</Link></td>
+            <td>{game.time}</td>
+            <td>{game.teams}</td>
+            <td>{game.location}</td>
           </tr>
+          
         ))}
         </tbody>
         </Table>
+        
+        </div>
     );
   }
   
+ 

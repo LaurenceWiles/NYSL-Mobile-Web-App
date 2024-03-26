@@ -26,16 +26,10 @@ export const Header = () => {
           <Nav className="me-auto">
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/schedule">Schedule</Nav.Link>
-          <Nav.Link as={Link} to="/GameDetails">Game Deatails</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/GameDetails" element={<GameDetails />} />
-        </Routes>
     </div>
   );
 }
