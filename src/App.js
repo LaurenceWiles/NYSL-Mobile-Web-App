@@ -17,8 +17,8 @@ const Main = () => {
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/schedule/*" element={<Schedule />} />
-          <Route path="/game/:gameId" element={<GameDetails />} />
-        </Routes>
+          <Route path="/game/:gameId" element={<GameDetails />} />    
+          </Routes>
     </div>
   )
 }
