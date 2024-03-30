@@ -9,9 +9,21 @@ import { Schedule } from './schedule';
 import logo from '../utils/asset/nysl_logo.png';
 import Image from 'react-bootstrap/Image';
 import { GameDetails } from './GameDetails';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth'
 
 
 export const Header = () => {
+
+  const signInWithGoogle = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    try {
+      await firebase.auth().signInWithPopup(provider);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
     <Navbar expand="md" className="bg-body-tertiary" fixed='top' bg='dark'>
@@ -27,6 +39,9 @@ export const Header = () => {
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/schedule">Schedule</Nav.Link>
           </Nav>
+          <Nav>
+              <Nav.Link as={Link} to="/SignIn">Sign In</Nav.Link>
+            </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
