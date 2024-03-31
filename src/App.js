@@ -14,7 +14,7 @@ import { getAuth, signInWithRedirect } from "firebase/auth";
 import { getRedirectResult } from "firebase/auth";
 import { useEffect } from 'react';
 import { app } from './components/firebase';
-import SignIn from './components/SignIn'
+import { SignIn } from './components/SignIn'
 
 
 
@@ -28,8 +28,7 @@ const Main = () => {
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/schedule/*" element={<Schedule />} />
-          <Route path="/game/:gameId" element={<GameDetails />} /> 
-          <Route path="/SignIn" element={<SignIn />} />   
+          <Route path="/game/:gameId" element={<GameDetails />} />  
           </Routes>
     </div>
   )
@@ -44,22 +43,3 @@ const App = () => {
 
 export default App;
 
-/*
-const auth = getAuth();
-  const provider = new GoogleAuthProvider();
-  useEffect(() => {
-    signInWithRedirect(auth, provider);
-    getRedirectResult(auth)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-  });
-}, [auth, provider]);
-*/
