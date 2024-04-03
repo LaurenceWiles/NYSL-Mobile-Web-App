@@ -15,6 +15,7 @@ import { getRedirectResult } from "firebase/auth";
 import { useEffect } from 'react';
 import { app } from './components/firebase';
 import { SignIn } from './components/SignIn'
+import { Messages } from './components/Messages';
 
 
 
@@ -29,6 +30,7 @@ const Main = () => {
           <Route path="/" element={<Home />} />
           <Route path="/schedule/*" element={<Schedule />} />
           <Route path="/game/:gameId" element={<GameDetails />} />  
+          <Route path="/game/messages/:gameId" element={<Messages />} />
           </Routes>
     </div>
   )
