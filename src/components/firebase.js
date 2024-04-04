@@ -22,6 +22,6 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-const database = getDatabase(app);//line 21
+const database = getDatabase(app);
 
 export { app, database, useList, auth, provider };
