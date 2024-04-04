@@ -1,7 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import { getDatabase } from "firebase/database";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/database'
+import { useList } from 'react-firebase-hooks/database';
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyACxsLkDB8YasICUCzLuNNCStwqozIJYYY",
@@ -13,5 +17,11 @@ const firebaseConfig = {
     measurementId: "G-DKN7WPEF96"
   };
 
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+const database = getDatabase(app);//line 21
+
+export { app, database, useList, auth, provider };

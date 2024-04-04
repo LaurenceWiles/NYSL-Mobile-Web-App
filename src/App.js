@@ -16,6 +16,9 @@ import { useEffect } from 'react';
 import { app } from './components/firebase';
 import { SignIn } from './components/SignIn'
 import { Messages } from './components/Messages';
+import ReactDOM from 'react-dom';
+import { initializeApp } from 'firebase/app';
+
 
 
 
