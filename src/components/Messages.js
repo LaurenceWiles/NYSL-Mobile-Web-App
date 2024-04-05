@@ -1,18 +1,36 @@
-import React from "react";
-import { Container, Image, Spinner } from 'react-bootstrap';
-import jsonData from '../utils/Messages.json'
+import React, { useEffect, useState, } from "react";
+import { Container, Spinner } from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
-import { getDatabase, ref, onValue } from "firebase/database";
-import { database } from "./firebase";
-import { useList } from 'react-firebase-hooks/database';
-
+import { getDatabase, ref, onValue, off } from "firebase/database";
+import { MessageInput } from "./MessageInput";
+import { ChatComponent } from "./ChatComponent";
 
 
 export const Messages = () => {
     const { gameId } = useParams();
     const db = getDatabase(); 
     const messagesRef = ref(db, `/messages/${gameId}`);
-    const [messages, loading, error] = useList(messagesRef);
+    const [messagesState, setMessagesState] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onValue(messagesRef, (snapshot) => {
+            const data = snapshot.val();
+            if (JSON.stringify(data) !== JSON.stringify(messagesState)) {
+                setMessagesState(data);
+            }
+            setLoading(false); 
+        }, (error) => {
+            setError(error); 
+            setLoading(false); 
+        });
+    
+        return () => {
+            off(messagesRef, 'value', unsubscribe);
+        };
+    }, [messagesRef, messagesState]); 
+    
 
     if (loading) {
         return (
@@ -30,44 +48,14 @@ export const Messages = () => {
     return (
         <div>
             <Container>
-                <ChatComponent messages={messages}/>
+                <ChatComponent messages={messagesState}/>
+                <MessageInput />
             </Container>
         </div>
     )
 
 }
 
-const ChatComponent = ({ messages }) => {
-
-    const sortedMessages = messages.slice().sort((a, b) => {
-        const timestampA = a.val().timestamp;
-        const timestampB = b.val().timestamp;
-        return timestampA - timestampB;
-    });
-
-    const reversedMessages = sortedMessages.reverse();
-
-   return (
-      <Container>
-        <h2>Message Board</h2>
-            <div className="container chat-container">
-                {reversedMessages && reversedMessages.map((messageSnapshot, index) => {
-                    const message = messageSnapshot.val();
-                    return (
-                        <div key={`message-${index}`} className="chat">
-                            <div className="chat-body">
-                                <div className="chat-name">{message.author}</div>
-                                <div className="chat-message">{message.text}</div>
-                                <div className="chat-time">{new Date(message.timestamp).toLocaleString()}</div>
-                            </div>
-                        </div>
-                    );
-                })}
-                {!reversedMessages || reversedMessages.length === 0 && <div><p>No messages available</p></div>}
-            </div>
-      </Container>
-    );
-  };
 
 
  
