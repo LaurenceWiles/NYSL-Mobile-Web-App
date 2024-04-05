@@ -9,16 +9,32 @@ import { Header } from './components/navbar';
 import { GameDetails } from './components/GameDetails';
 import { GamesTable } from './components/GamesTable';
 import jsonData from './components/games.json'
+import { GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithRedirect } from "firebase/auth";
+import { getRedirectResult } from "firebase/auth";
+import { useEffect } from 'react';
+import { app } from './components/firebase';
+import { SignIn } from './components/SignIn'
+import { Messages } from './components/Messages';
+import ReactDOM from 'react-dom';
+import { initializeApp } from 'firebase/app';
+
+
+
+
+
 
 const Main = () => {
+  
   return (
     <div>
       <Header />
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/schedule/*" element={<Schedule />} />
-          <Route path="/game/:gameId" element={<GameDetails />} />
-        </Routes>
+          <Route path="/game/:gameId" element={<GameDetails />} />  
+          <Route path="/game/messages/:gameId" element={<Messages />} />
+          </Routes>
     </div>
   )
 }
@@ -31,3 +47,4 @@ const App = () => {
 }
 
 export default App;
+

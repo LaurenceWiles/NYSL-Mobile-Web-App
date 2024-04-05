@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { Button, Container } from 'react-bootstrap';
+import { Link, useLocation } from 'react-router-dom';
 import {useParams} from 'react-router-dom';
 import jsonData from './games.json';
 
@@ -35,6 +35,9 @@ export const GameDetails = () => {
                     <p>Teams: {game.teams}</p>
                     <p>Location: {game.location}</p>
                     <p>Address: {jsonData.locations[game.location].address}</p>
+                    <Link to={{ pathname: `/game/messages/${gameId}`, state: { game } }}>
+                    <Button>Message Board</Button>
+                    </Link>
                     <div style={mapContainerStyles}>
                             <iframe
                                 title="Map"
