@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,12 +12,11 @@ import { GameDetails } from './GameDetails';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth'
 import { SignIn } from './SignIn';
-
+import { useAuth } from './AuthContext';
 
 export const Header = () => {
 
   
-
   return (
     <div>
     <Navbar expand="md" className="bg-body-tertiary" fixed='top' bg='dark'>

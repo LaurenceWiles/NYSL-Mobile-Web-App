@@ -5,7 +5,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database'
 import { useList } from 'react-firebase-hooks/database';
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider,onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyACxsLkDB8YasICUCzLuNNCStwqozIJYYY",
@@ -24,4 +24,5 @@ const provider = new GoogleAuthProvider();
 
 const database = getDatabase(app);
 
-export { app, database, useList, auth, provider };
+export { app, database, useList, auth, provider,onAuthStateChanged };
+

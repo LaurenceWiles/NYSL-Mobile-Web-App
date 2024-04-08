@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext,useEffect,useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import {useParams} from 'react-router-dom';
 import jsonData from './games.json';
+import { useAuth } from './AuthContext';
+import { MessageButton } from './MessageButton';
+
 
 const mapContainerStyles = {
     position: 'relative',
@@ -21,8 +24,12 @@ const iframeStyles = {
 
 
 export const GameDetails = () => {
+     
     const { gameId } = useParams();
+    
+    const { isSignedIn } = useAuth();
     const game = jsonData.games[gameId];
+    
     
     return (
         <div>
@@ -36,7 +43,7 @@ export const GameDetails = () => {
                     <p>Location: {game.location}</p>
                     <p>Address: {jsonData.locations[game.location].address}</p>
                     <Link to={{ pathname: `/game/messages/${gameId}`, state: { game } }}>
-                    <Button>Message Board</Button>
+                    < MessageButton>ssss</MessageButton>
                     </Link>
                     <div style={mapContainerStyles}>
                             <iframe
@@ -53,3 +60,12 @@ export const GameDetails = () => {
     )
 }
 
+/*
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+  } else {
+    // No user is signed in.
+  }
+});
+*/

@@ -18,6 +18,7 @@ import { SignIn } from './components/SignIn'
 import { Messages } from './components/Messages';
 import ReactDOM from 'react-dom';
 import { initializeApp } from 'firebase/app';
+import { AuthProvider } from './components/AuthContext';
 
 
 
@@ -27,6 +28,7 @@ import { initializeApp } from 'firebase/app';
 const Main = () => {
   
   return (
+    <AuthProvider>
     <div>
       <Header />
       <Routes>
@@ -34,8 +36,10 @@ const Main = () => {
           <Route path="/schedule/*" element={<Schedule />} />
           <Route path="/game/:gameId" element={<GameDetails />} />  
           <Route path="/game/messages/:gameId" element={<Messages />} />
+          <Route path="/signin" element={<SignIn />} />
           </Routes>
     </div>
+    </AuthProvider>
   )
 }
 
