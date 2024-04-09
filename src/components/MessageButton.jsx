@@ -16,7 +16,6 @@ export const MessageButton = () => {
     return (
         <div>
             {isLoggin && <Button>Message Board</Button>}
-          
-        </div>
+         </div>
     )
 }

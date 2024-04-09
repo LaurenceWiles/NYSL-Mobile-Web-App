@@ -12,16 +12,13 @@ import jsonData from './components/games.json'
 import { GoogleAuthProvider } from "firebase/auth";
 import { getAuth, signInWithRedirect } from "firebase/auth";
 import { getRedirectResult } from "firebase/auth";
-import { useEffect } from 'react';
-import { app } from './components/firebase';
+import { useEffect, useState } from 'react';
+import { app, auth } from './components/firebase';
 import { SignIn } from './components/SignIn'
 import { Messages } from './components/Messages';
 import ReactDOM from 'react-dom';
 import { initializeApp } from 'firebase/app';
 import { AuthProvider } from './components/AuthContext';
-
-
-
 
 
 
@@ -51,4 +48,13 @@ const App = () => {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
 

@@ -43,11 +43,11 @@ export const GameDetails = () => {
                     <p>Location: {game.location}</p>
                     <p>Address: {jsonData.locations[game.location].address}</p>
                     <Link to={{ pathname: `/game/messages/${gameId}`, state: { game } }}>
-                    < MessageButton>ssss</MessageButton>
+                    < MessageButton />
                     </Link>
                     <div style={mapContainerStyles}>
                             <iframe
-                                title="Map"
+                                title={`Map of ${game.location}`}
                                 style={iframeStyles}
                                 src={jsonData.locations[game.location].map_url}
                                 allowFullScreen
@@ -60,12 +60,3 @@ export const GameDetails = () => {
     )
 }
 
-/*
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-  } else {
-    // No user is signed in.
-  }
-});
-*/
