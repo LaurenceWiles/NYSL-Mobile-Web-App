@@ -38,7 +38,7 @@ export const Messages = () => {
             if (user) {
                 setLoggedIn(true);
             } else {
-                navigate("/");
+                navigate(`/game/${gameId}`);
             }
         });
 
