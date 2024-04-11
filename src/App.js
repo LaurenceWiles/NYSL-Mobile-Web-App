@@ -19,6 +19,7 @@ import { Messages } from './components/Messages';
 import ReactDOM from 'react-dom';
 import { initializeApp } from 'firebase/app';
 import { AuthProvider } from './components/AuthContext';
+import { PhotoGallery } from './components/PhotoGallery';
 
 
 
@@ -33,6 +34,7 @@ const Main = () => {
           <Route path="/schedule/*" element={<Schedule />} />
           <Route path="/game/:gameId" element={<GameDetails />} />  
           <Route path="/game/messages/:gameId" element={<Messages />} />
+          <Route path="/game/photos/:gameId" element={<PhotoGallery />} />
           <Route path="/signin" element={<SignIn />} />
           </Routes>
     </div>

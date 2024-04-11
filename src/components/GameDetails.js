@@ -5,6 +5,7 @@ import {useParams} from 'react-router-dom';
 import jsonData from './games.json';
 import { useAuth } from './AuthContext';
 import { MessageButton } from './MessageButton';
+import { GalleryButton } from './GalleryButton';
 
 
 const mapContainerStyles = {
@@ -44,6 +45,9 @@ export const GameDetails = () => {
                     <p>Address: {jsonData.locations[game.location].address}</p>
                     <Link to={{ pathname: `/game/messages/${gameId}`, state: { game } }}>
                     < MessageButton />
+                    </Link>
+                    <Link to={{ pathname: `/game/photos/${gameId}`, state: { game } }}>
+                    < GalleryButton />
                     </Link>
                     <div style={mapContainerStyles}>
                             <iframe
