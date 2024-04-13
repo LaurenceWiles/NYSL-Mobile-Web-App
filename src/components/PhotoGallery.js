@@ -52,12 +52,11 @@ export const PhotoGallery = () => {
 ;
 
 const handleUpload = (newImage) => {
-    setImages([...images, newImage]);
+    setImages([newImage, ...images]);
 };
 
     return (
         <Container>
-            <h1 className="mt-5">Photo Gallery</h1>
             {error && (
                 <Alert variant="danger" className="mt-3">
                     {error}

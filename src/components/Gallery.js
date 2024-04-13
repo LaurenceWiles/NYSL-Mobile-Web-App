@@ -4,7 +4,7 @@ import { Card, Image } from "react-bootstrap";
 const Gallery = ({ images }) => {
     return (
         <>
-            <h2 className="mt-5">Gallery</h2>
+            <h1 className="mt-5">Gallery</h1>
             <div className="d-flex flex-wrap">
                 {images.map((image, index) => (
                     <Card key={index} className="m-2" style={{ width: '18rem' }}>
