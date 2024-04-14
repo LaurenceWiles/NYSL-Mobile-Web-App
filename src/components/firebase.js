@@ -25,3 +25,14 @@ const storage = getStorage();
 
 export { app, database, useList, auth, provider, onAuthStateChanged, storage };
 
+/*
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow read access to the 'pictures' directory
+    match /pictures/{gameId}/{allPaths=**} {
+      allow read, write;
+    }
+  }
+}
+
+*/
