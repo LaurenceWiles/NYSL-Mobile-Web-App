@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-  signOut,
-} from "firebase/auth";
-
-const auth = getAuth();
-const googleProvider = new GoogleAuthProvider();
+import { auth, provider } from "./firebase";
+import { signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
 
 export const SignIn = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsSignedIn(!!user);
     });
 
@@ -24,7 +16,7 @@ export const SignIn = () => {
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      await signInWithPopup(auth, provider);
     } catch (err) {
       console.error(err);
     }

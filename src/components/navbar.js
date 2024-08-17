@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../utils/asset/nysl_logo.png";
-import "firebase/compat/auth";
+//import "firebase/compat/auth";
 import { SignIn } from "./SignIn";
 
 export const Header = () => {

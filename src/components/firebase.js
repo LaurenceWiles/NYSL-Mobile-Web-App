@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase } from "firebase/database";
-import { useList } from "react-firebase-hooks/database";
 import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
@@ -23,4 +22,4 @@ const provider = new GoogleAuthProvider();
 const database = getDatabase(app);
 const storage = getStorage();
 
-export { app, database, useList, auth, provider, onAuthStateChanged, storage };
+export { app, database, auth, provider, onAuthStateChanged, storage };
