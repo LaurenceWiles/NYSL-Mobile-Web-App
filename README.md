@@ -18,25 +18,25 @@ To run this project locally, follow these steps:
 1. **Clone the repository**
    ```bash
    git clone https://github.com/LaurenceWiles/NYSL-Mobile-Web-App.git
-   ´´´
+   ```
 
   2. **Navigate to the project directory**
      ```bash
      cd nysl-web-app
-     ´´´
+     ```
 
   3. **Install dependencies**
      ```bash
      npm install
-     ´´´
+     ```
 
   4. **Start the development server**
      ```bash
      npm start
-     ´´´
+     ```
 
   5. **Open the app in your browser**
-      + Go to **http://localhost:3000**
+       Go to **`http://localhost:3000`**
 
 
 
