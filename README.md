@@ -35,8 +35,8 @@ To run this project locally, follow these steps:
      npm start
      ```
 
-  5. **Open the app in your browser**
-       Go to **`http://localhost:3000`**
+  5. **Open the app in your browser** 
+      + Go to **`http://localhost:3000`**
 
 
 
