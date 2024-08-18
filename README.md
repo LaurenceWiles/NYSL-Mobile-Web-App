@@ -11,3 +11,9 @@ This is a mobile-friendly web application designed for the Northside Youth Socce
 + **User Authentication**: Sign in with Google to access message boards and photo boards.
 + **Progressive Web App (PWA)**: The app is optimized for mobile use, including home screen integration.
 
+## Installation
+
+To run this project locally, follow these steps:
+
+
+
