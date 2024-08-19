@@ -8,7 +8,7 @@ import { Contact } from "./Contact";
 export const Home = () => {
   return (
     <div>
-      <Container>
+      <Container className="home-container">
         <HeadingText />
         <Picture />
         <About />

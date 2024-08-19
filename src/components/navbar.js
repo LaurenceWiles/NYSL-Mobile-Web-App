@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../utils/asset/nysl_logo.png";
-//import "firebase/compat/auth";
 import { SignIn } from "./SignIn";
 
-export const Header = () => {
+export const Header = ({ onNavbarToggle }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleToggle = () => {
+    setExpanded(!expanded);
+    onNavbarToggle(!expanded);
+  };
+
   return (
     <div>
-      <Navbar expand="md" className="bg-body-tertiary" fixed="top" bg="dark">
+      <Navbar
+        expand="md"
+        className="bg-body-tertiary"
+        fixed="top"
+        bg="dark"
+        expanded={expanded}
+        onToggle={handleToggle}
+      >
         <Container>
           <Navbar.Brand as={Link} to="/">
             <img src={logo} width={60} alt="NYSL Logo" />
