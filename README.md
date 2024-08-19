@@ -37,6 +37,25 @@ To run this project locally, follow these steps:
 
   5. **Open the app in your browser** 
       + Go to **`http://localhost:3000`**
+    
+## Usage
+
+### Game Scheules
+
++ View all upcoming games with details such as date, time, and location.
++ Click on a game to view more details, including an embedded Google Map showing the game location.
+
+### Message Boards
+
++ Sign in with Google to access message boards.
++ Post messages or view messages posted by other users for a specific game.
+
+### Photo Boards
+
++ Sign in with Google to view and upload game photos.
++ Use your phone's camera to take photos and upload them directly to the app.
+
+
 
 
 
