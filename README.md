@@ -55,6 +55,18 @@ To run this project locally, follow these steps:
 + Sign in with Google to view and upload game photos.
 + Use your phone's camera to take photos and upload them directly to the app.
 
+## Technologies Used
+
++ React: To build user interface.
++ React-Bootstrap: For styling and UI components.
++ React Router: For navigation and routing.
++ Firebase:
+   + Firebase Authentication: For Google sign-in.
+   + Firebase Realtime Database: For storing and retrieving messages.
+   + Firebase Cloud Storage: For storing and retrieving photos.
+   + Firebase Hosting: For deploying the application.
++ PWA Asset Generator: To create app icons and splash screens for PWA.
+
 
 
 
