@@ -36,7 +36,7 @@ To run this project locally, follow these steps:
      ```
 
   5. **Open the app in your browser** 
-       Go to **`http://localhost:3000`**
+      + Go to **`http://localhost:3000`**
 
 
 
