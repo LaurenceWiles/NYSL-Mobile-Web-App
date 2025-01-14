@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Home } from "./views/Home";
 import { Schedule } from "./components/schedule";
-import { Header } from "./components/navbar";
+import { Header } from "./components/Navbar";
 import { GameDetails } from "./views/GameDetails";
 import { SignIn } from "./components/SignIn";
 import { Messages } from "./views/Messages";
