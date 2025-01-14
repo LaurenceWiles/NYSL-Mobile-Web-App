@@ -1,4 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files
+
+.gitignore
 
 # dependencies
 /node_modules
@@ -32,3 +34,7 @@ yarn.lock
 # Firebase deployment artifacts
 .firebase/
 firebase-debug.log
+
+NYSL_site
+
+UsersLaureAppDataRoamingnpm
