@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { GamesTable } from "./GamesTable";
-import jsonData from "./games.json";
+import jsonData from "../utils/games.json";
 
 export const Schedule = () => {
   return (

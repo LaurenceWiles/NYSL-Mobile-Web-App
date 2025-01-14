@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import jsonData from "../components/games.json";
+import jsonData from "../utils/games.json";
 import { useAuth } from "../AuthContext";
 import { MessageButton } from "../components/MessageButton";
 import { GalleryButton } from "../components/GalleryButton";
