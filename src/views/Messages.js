@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDatabase, ref, onValue, off } from "firebase/database";
-import { MessageInput } from "./MessageInput";
-import { ChatComponent } from "./ChatComponent";
+import { MessageInput } from "../components/MessageInput";
+import { ChatComponent } from "../components/ChatComponent";
 import { auth } from "../firebase";
 
 export const Messages = () => {

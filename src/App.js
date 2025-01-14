@@ -6,7 +6,7 @@ import { Schedule } from "./components/schedule";
 import { Header } from "./components/navbar";
 import { GameDetails } from "./views/GameDetails";
 import { SignIn } from "./components/SignIn";
-import { Messages } from "./components/Messages";
+import { Messages } from "./views/Messages";
 import { AuthProvider } from "./AuthContext";
 import { PhotoGallery } from "./components/PhotoGallery";
 
