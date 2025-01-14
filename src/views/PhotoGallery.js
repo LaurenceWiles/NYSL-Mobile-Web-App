@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { storage } from "../firebase";
 import { ref, getDownloadURL, listAll, getMetadata } from "firebase/storage";
 import { Container, Alert } from "react-bootstrap";
-import UploadPicture from "./UploadPicture";
-import Gallery from "./Gallery";
+import UploadPicture from "../components/UploadPicture";
+import Gallery from "../components/Gallery";
 import { auth } from "../firebase";
 
 export const PhotoGallery = () => {
