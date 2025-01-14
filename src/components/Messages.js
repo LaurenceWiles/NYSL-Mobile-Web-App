@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getDatabase, ref, onValue, off } from "firebase/database";
 import { MessageInput } from "./MessageInput";
 import { ChatComponent } from "./ChatComponent";
-import { auth } from "./firebase";
+import { auth } from "../firebase";
 
 export const Messages = () => {
   const { gameId } = useParams();

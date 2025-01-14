@@ -7,7 +7,7 @@ import { Header } from "./components/navbar";
 import { GameDetails } from "./components/GameDetails";
 import { SignIn } from "./components/SignIn";
 import { Messages } from "./components/Messages";
-import { AuthProvider } from "./components/AuthContext";
+import { AuthProvider } from "./AuthContext";
 import { PhotoGallery } from "./components/PhotoGallery";
 
 const Main = () => {

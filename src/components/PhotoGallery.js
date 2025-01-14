@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { storage } from "./firebase";
+import { storage } from "../firebase";
 import { ref, getDownloadURL, listAll, getMetadata } from "firebase/storage";
 import { Container, Alert } from "react-bootstrap";
 import UploadPicture from "./UploadPicture";
 import Gallery from "./Gallery";
-import { auth } from "./firebase";
+import { auth } from "../firebase";
 
 export const PhotoGallery = () => {
   const { gameId } = useParams();

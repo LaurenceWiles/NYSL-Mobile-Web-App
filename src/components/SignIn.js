@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { auth, provider } from "./firebase";
+import { auth, provider } from "../firebase";
 import { signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
 import { useMediaQuery } from "react-responsive";
 
