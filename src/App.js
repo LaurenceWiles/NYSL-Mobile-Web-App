@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Home } from "./views/Home";
 import { Schedule } from "./views/Schedule";
-import { Header } from "./components/Navbar";
+import { NavHeader } from "./components/NavHeader";
 import { GameDetails } from "./views/GameDetails";
 import { SignIn } from "./components/SignIn";
 import { Messages } from "./views/Messages";
@@ -20,7 +20,7 @@ const App = () => {
   return (
     <AuthProvider>
       <div>
-        <Header onNavbarToggle={handleNavbarToggle} />
+        <NavHeader onNavbarToggle={handleNavbarToggle} />
         <div
           style={{
             marginTop: navbarExpanded ? "130px" : "0px",

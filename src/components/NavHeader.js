@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../utils/asset/nysl_logo.png";
 import { SignIn } from "./SignIn";
 
-export const Header = ({ onNavbarToggle }) => {
+export const NavHeader = ({ onNavbarToggle }) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleToggle = () => {
