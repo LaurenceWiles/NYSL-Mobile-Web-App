@@ -21,12 +21,7 @@ const App = () => {
     <AuthProvider>
       <div>
         <NavHeader onNavbarToggle={handleNavbarToggle} />
-        <div
-          style={{
-            marginTop: navbarExpanded ? "130px" : "0px",
-            transition: "margin-top 0.3s ease-in-out",
-          }}
-        >
+        <div className={`content ${navbarExpanded ? "expanded" : ""}`}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/schedule/*" element={<Schedule />} />
