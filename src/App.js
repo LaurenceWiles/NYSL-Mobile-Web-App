@@ -10,7 +10,7 @@ import { Messages } from "./views/Messages";
 import { AuthProvider } from "./AuthContext";
 import { PhotoGallery } from "./views/PhotoGallery";
 
-const Main = () => {
+const App = () => {
   const [navbarExpanded, setNavbarExpanded] = useState(false);
 
   const handleNavbarToggle = (expanded) => {
@@ -39,10 +39,6 @@ const Main = () => {
       </div>
     </AuthProvider>
   );
-};
-
-const App = () => {
-  return <Main />;
 };
 
 export default App;
