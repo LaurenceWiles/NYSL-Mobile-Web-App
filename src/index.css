@@ -28,6 +28,7 @@ code {
 
 .home-container {
   padding-bottom: 50px;
+  max-width: 1024px !important;
 }
 
 .chat-container {

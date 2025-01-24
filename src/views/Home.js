@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "react-bootstrap";
 import { Picture } from "../components/Picture";
 import { HeadingText } from "../components/HeadingText";
@@ -8,7 +7,7 @@ import { Contact } from "../components/Contact";
 export const Home = () => {
   return (
     <div>
-      <Container className="home-container">
+      <Container className="home-container text-center">
         <HeadingText />
         <Picture />
         <About />
