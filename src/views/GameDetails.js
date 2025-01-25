@@ -2,14 +2,12 @@ import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import jsonData from "../utils/games.json";
-import { useAuth } from "../AuthContext";
 import { MessageButton } from "../components/MessageButton";
 import { GalleryButton } from "../components/GalleryButton";
 
 export const GameDetails = () => {
   const { gameId } = useParams();
 
-  const { isSignedIn } = useAuth();
   const game = jsonData.games[gameId];
 
   return (
