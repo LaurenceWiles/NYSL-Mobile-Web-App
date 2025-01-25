@@ -1,4 +1,3 @@
-import React from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 
@@ -6,7 +5,6 @@ export const GamesTable = ({ jsonData }) => {
   const gamesData = Object.entries(jsonData.games) || [];
   return (
     <div>
-      <h2 className="text-center">Games Schedule</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
