@@ -1,4 +1,3 @@
-import React from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -6,21 +5,6 @@ import jsonData from "../utils/games.json";
 import { useAuth } from "../AuthContext";
 import { MessageButton } from "../components/MessageButton";
 import { GalleryButton } from "../components/GalleryButton";
-
-const mapContainerStyles = {
-  position: "relative",
-  width: "100%",
-  paddingTop: "56.25%",
-};
-
-const iframeStyles = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  width: "100%",
-  height: "100%",
-  border: 0,
-};
 
 export const GameDetails = () => {
   const { gameId } = useParams();
@@ -30,7 +14,7 @@ export const GameDetails = () => {
 
   return (
     <div>
-      <Container>
+      <Container className="text-center">
         <h2>Game Details</h2>
         {game && (
           <div>
@@ -47,10 +31,10 @@ export const GameDetails = () => {
             <Link to={{ pathname: `/game/photos/${gameId}`, state: { game } }}>
               <GalleryButton />
             </Link>
-            <div style={mapContainerStyles}>
+            <div className="map-container">
               <iframe
                 title={`Map of ${game.location}`}
-                style={iframeStyles}
+                className="map-container-iframe"
                 src={jsonData.locations[game.location].map_url}
                 allowFullScreen
               ></iframe>
