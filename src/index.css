@@ -39,6 +39,15 @@ code {
 .home-picture {
   margin-bottom: 1rem;
 }
+
+.schedule-div {
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+}
+.schedule-header {
+  margin-bottom: 1rem;
+}
+
 .chat-container {
   padding: 20px;
   border: 1px solid #ccc;

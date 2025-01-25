@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export const GamesTable = ({ jsonData }) => {
   const gamesData = Object.entries(jsonData.games) || [];
+
   return (
     <div>
       <Table striped bordered hover>
@@ -18,9 +19,7 @@ export const GamesTable = ({ jsonData }) => {
           {gamesData.map(([gameID, game]) => (
             <tr key={gameID}>
               <td>
-                <Link to={{ pathname: `/game/${gameID}`, state: { game } }}>
-                  {game.date}
-                </Link>
+                <Link to={{ pathname: `/game/${gameID}` }}>{game.date}</Link>
               </td>
               <td>{game.time}</td>
               <td>{game.teams}</td>
