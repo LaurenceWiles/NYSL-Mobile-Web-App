@@ -13,22 +13,15 @@ export const GameDetails = () => {
   return (
     <div>
       <Container className="text-center">
-        <h2>Game Details</h2>
+        <h2 className="game-details-header">Game Details</h2>
         {game && (
-          <div>
+          <div className="game-details-div">
             <p>Date: {game.date}</p>
             <p>Time: {game.time}</p>
             <p>Teams: {game.teams}</p>
             <p>Location: {game.location}</p>
             <p>Address: {jsonData.locations[game.location].address}</p>
-            <Link
-              to={{ pathname: `/game/messages/${gameId}`, state: { game } }}
-            >
-              <MessageButton />
-            </Link>
-            <Link to={{ pathname: `/game/photos/${gameId}`, state: { game } }}>
-              <GalleryButton />
-            </Link>
+
             <div className="map-container">
               <iframe
                 title={`Map of ${game.location}`}
@@ -39,6 +32,12 @@ export const GameDetails = () => {
             </div>
           </div>
         )}
+        <Link to={{ pathname: `/game/messages/${gameId}` }}>
+          <MessageButton />
+        </Link>
+        <Link to={{ pathname: `/game/photos/${gameId}` }}>
+          <GalleryButton />
+        </Link>
       </Container>
     </div>
   );
