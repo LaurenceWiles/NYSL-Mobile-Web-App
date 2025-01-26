@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getDatabase, ref, onValue, off } from "firebase/database";
@@ -8,7 +8,11 @@ import { ChatComponent } from "../components/ChatComponent";
 export const Messages = () => {
   const { gameId } = useParams();
   const db = getDatabase();
-  const messagesRef = ref(db, `/messages/${gameId}`);
+  const messagesRef = useMemo(
+    () => ref(db, `/messages/${gameId}`),
+    [db, gameId]
+  );
+
   const [messagesState, setMessagesState] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,10 +21,7 @@ export const Messages = () => {
     const unsubscribe = onValue(
       messagesRef,
       (snapshot) => {
-        const data = snapshot.val();
-        if (JSON.stringify(data) !== JSON.stringify(messagesState)) {
-          setMessagesState(data);
-        }
+        setMessagesState(snapshot.val());
         setLoading(false);
       },
       (error) => {
@@ -28,15 +29,14 @@ export const Messages = () => {
         setLoading(false);
       }
     );
-
     return () => {
-      off(messagesRef, "value", unsubscribe);
+      off(messagesRef, "value");
     };
-  }, [messagesRef, messagesState]);
+  }, [messagesRef]);
 
   if (loading) {
     return (
-      <Container className="text-center">
+      <Container className="text-center messages-loading-container">
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
@@ -45,7 +45,14 @@ export const Messages = () => {
   }
 
   if (error) {
-    return <p>Error fetching messages: {error.message}</p>;
+    return (
+      <Container className="text-center mt-5">
+        <p className="text-danger">
+          <strong>Error:</strong> Unable to load messages. Please try again
+          later.
+        </p>
+      </Container>
+    );
   }
   return (
     <div>
