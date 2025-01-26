@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getDatabase, ref, onValue, off } from "firebase/database";
 import { MessageInput } from "../components/MessageInput";
 import { ChatComponent } from "../components/ChatComponent";
-import { auth } from "../firebase";
 
 export const Messages = () => {
   const { gameId } = useParams();
-  const navigate = useNavigate();
   const db = getDatabase();
   const messagesRef = ref(db, `/messages/${gameId}`);
   const [messagesState, setMessagesState] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  //const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onValue(
@@ -36,20 +33,6 @@ export const Messages = () => {
       off(messagesRef, "value", unsubscribe);
     };
   }, [messagesRef, messagesState]);
-
-  /*
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setLoggedIn(true);
-      } else {
-        navigate(`/game/${gameId}`);
-      }
-    });
-
-    return () => unsubscribe();
-  }, [navigate]);
-  */
 
   if (loading) {
     return (
