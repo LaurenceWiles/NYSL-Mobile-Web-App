@@ -32,12 +32,14 @@ export const GameDetails = () => {
             </div>
           </div>
         )}
-        <Link to={{ pathname: `/game/messages/${gameId}` }}>
-          <MessageButton />
-        </Link>
-        <Link to={{ pathname: `/game/photos/${gameId}` }}>
-          <GalleryButton />
-        </Link>
+        <div className="game-details-buttons">
+          <Link to={{ pathname: `/game/messages/${gameId}` }}>
+            <MessageButton />
+          </Link>
+          <Link to={{ pathname: `/game/photos/${gameId}` }}>
+            <GalleryButton />
+          </Link>
+        </div>
       </Container>
     </div>
   );
