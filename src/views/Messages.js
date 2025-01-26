@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { getDatabase, ref, onValue, off } from "firebase/database";
@@ -14,7 +14,7 @@ export const Messages = () => {
   const [messagesState, setMessagesState] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  //const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onValue(
@@ -37,6 +37,7 @@ export const Messages = () => {
     };
   }, [messagesRef, messagesState]);
 
+  /*
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -48,6 +49,7 @@ export const Messages = () => {
 
     return () => unsubscribe();
   }, [navigate]);
+  */
 
   if (loading) {
     return (
