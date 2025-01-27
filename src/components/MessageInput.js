@@ -13,11 +13,7 @@ export const MessageInput = () => {
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserEmail(user.email);
-      } else {
-        setUserEmail("");
-      }
+      setUserEmail(user.email);
     });
   }, []);
 
