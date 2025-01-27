@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 export const ChatComponent = ({ messages }) => {
   const messageList = messages ? Object.values(messages) : [];
 
-  const sortedMessages = messageList.slice().sort((a, b) => {
+  const sortedMessages = messageList.sort((a, b) => {
     const timestampA = a.timestamp;
     const timestampB = b.timestamp;
     return timestampA - timestampB;
