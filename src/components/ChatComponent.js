@@ -21,8 +21,8 @@ export const ChatComponent = ({ messages }) => {
 
   return (
     <Container>
-      <h2>Message Board</h2>
-      <div ref={chatContainerRef} className="container chat-container">
+      <h2 className="text-center message-board-header">Message Board</h2>
+      <div ref={chatContainerRef} className="chat-container">
         {sortedMessages.map((message, index) => (
           <div key={`message-${index}`} className="chat">
             <div className="chat-body">
