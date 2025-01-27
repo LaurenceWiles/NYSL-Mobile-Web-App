@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { getDatabase, ref, onValue, off } from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 import { MessageInput } from "../components/MessageInput";
 import { ChatComponent } from "../components/ChatComponent";
 
@@ -29,9 +29,7 @@ export const Messages = () => {
         setLoading(false);
       }
     );
-    return () => {
-      off(messagesRef, "value");
-    };
+    return unsubscribe;
   }, [messagesRef]);
 
   if (loading) {
