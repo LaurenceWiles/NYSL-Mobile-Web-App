@@ -1,12 +1,14 @@
 import { useEffect, useState, useMemo } from "react";
 import { Container, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { MessageInput } from "../components/MessageInput";
 import { ChatComponent } from "../components/ChatComponent";
+import { auth } from "../firebase";
 
 export const Messages = () => {
   const { gameId } = useParams();
+  const navigate = useNavigate();
   const db = getDatabase();
   const messagesRef = useMemo(
     () => ref(db, `/messages/${gameId}`),
@@ -16,6 +18,7 @@ export const Messages = () => {
   const [messagesState, setMessagesState] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onValue(
@@ -31,6 +34,17 @@ export const Messages = () => {
     );
     return unsubscribe;
   }, [messagesRef]);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        navigate(`/game/${gameId}`);
+      }
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   if (loading) {
     return (
