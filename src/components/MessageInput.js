@@ -41,27 +41,29 @@ export const MessageInput = () => {
   };
 
   return (
-    <Form className="fixed-bottom" onSubmit={handleMessageSubmit}>
+    <Form onSubmit={handleMessageSubmit}>
       <Container className="mb-3">
-        <Form.Group
-          controlId="messageForm"
-          className="d-flex align-items-center"
-        >
-          <Form.Control
-            type="text"
-            placeholder="Type your message here..."
-            className="flex-grow-1"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <Button
-            variant="primary"
-            type="submit"
-            className="btn-circle custom-btn-circle"
+        <div className="message-input-div">
+          <Form.Group
+            controlId="messageForm"
+            className="d-flex align-items-center"
           >
-            <BsArrowRight />
-          </Button>
-        </Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="Type your message here..."
+              className="flex-grow-1"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <Button
+              variant="primary"
+              type="submit"
+              className="btn-circle custom-btn-circle"
+            >
+              <BsArrowRight />
+            </Button>
+          </Form.Group>
+        </div>
       </Container>
     </Form>
   );
