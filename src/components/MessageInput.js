@@ -13,9 +13,7 @@ export const MessageInput = () => {
   useEffect(() => {
     const auth = getAuth();
     const user = auth.currentUser;
-    if (user) {
-      setUserEmail(user.email);
-    }
+    const userEmail = setUserEmail(user.email);
   }, []);
 
   const handleMessageSubmit = (e) => {
