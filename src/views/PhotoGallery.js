@@ -36,9 +36,11 @@ export const PhotoGallery = () => {
           return { url, metadata };
         });
         const urls = await Promise.all(urlsPromises);
-        urls.sort((a, b) => {
-          return b.metadata.timeCreated - a.metadata.timeCreated;
-        });
+        urls.sort(
+          (a, b) =>
+            new Date(b.metadata.timeCreated) - new Date(a.metadata.timeCreated)
+        );
+
         setImages(urls);
       } catch (error) {
         console.error("Error fetching images:", error);
