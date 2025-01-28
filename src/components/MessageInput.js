@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { BsArrowRight } from "react-icons/bs";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getDatabase, ref, push } from "firebase/database";
 import { useParams } from "react-router-dom";
 
@@ -12,9 +12,10 @@ export const MessageInput = () => {
 
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+    const user = auth.currentUser;
+    if (user) {
       setUserEmail(user.email);
-    });
+    }
   }, []);
 
   const handleMessageSubmit = (e) => {
