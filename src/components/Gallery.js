@@ -6,7 +6,7 @@ const Gallery = ({ images }) => {
       <h1 className="mt-5">Gallery</h1>
       <div className="d-flex flex-wrap">
         {images.map((image) => (
-          <Card key={image.url} className="m-2" style={{ width: "18rem" }}>
+          <Card key={image.url} className="m-2 photo-card">
             <Card.Img variant="top" src={image.url} />
             <Card.Body>
               <Card.Text>
