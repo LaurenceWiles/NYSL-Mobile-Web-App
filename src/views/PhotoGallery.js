@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { storage } from "../firebase";
 import { ref, getDownloadURL, listAll, getMetadata } from "firebase/storage";
 import { Container, Alert } from "react-bootstrap";
@@ -9,6 +9,7 @@ import { auth } from "../firebase";
 
 export const PhotoGallery = () => {
   const { gameId } = useParams();
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [images, setImages] = useState([]);
   const [user, setUser] = useState(null);
@@ -18,12 +19,12 @@ export const PhotoGallery = () => {
       if (user) {
         setUser(user);
       } else {
-        setUser(null);
+        navigate(`/game/${gameId}`);
       }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [navigate, gameId]);
 
   useEffect(() => {
     const fetchImages = async () => {
