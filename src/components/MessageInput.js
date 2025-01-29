@@ -55,7 +55,7 @@ export const MessageInput = () => {
             <Button
               variant="primary"
               type="submit"
-              className="btn-circle custom-btn-circle"
+              className="btn-circle custom-btn-circle d-flex justify-content-center align-items-center ms-1"
             >
               <BsArrowRight />
             </Button>

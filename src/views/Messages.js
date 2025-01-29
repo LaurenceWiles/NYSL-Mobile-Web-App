@@ -48,7 +48,7 @@ export const Messages = () => {
 
   if (loading) {
     return (
-      <Container className="text-center messages-loading-container">
+      <Container className="text-center messages-loading-container d-flex justify-content-center align-items-center">
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>

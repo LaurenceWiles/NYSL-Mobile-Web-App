@@ -2,7 +2,7 @@ import React from "react";
 
 export const About = () => {
   return (
-    <div className="about-div">
+    <div className="about-div ">
       <h3>Mission</h3>
       <p>
         To support young athletes living in Chicago's northside neighborhoods,

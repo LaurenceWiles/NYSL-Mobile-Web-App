@@ -24,10 +24,10 @@ export const ChatComponent = ({ messages }) => {
       <h2 className="text-center message-board-header">Message Board</h2>
       <div ref={chatContainerRef} className="chat-container">
         {sortedMessages.map((message, index) => (
-          <div key={`message-${index}`} className="chat">
+          <div key={`message-${index}`} className="chat d-flex mb-3">
             <div className="chat-body">
-              <div className="chat-name">{message.author}</div>
-              <div className="chat-message">{message.text}</div>
+              <div className="chat-name mb-1 fw-bold">{message.author}</div>
+              <div className="chat-message mb-1">{message.text}</div>
               <div className="chat-time">
                 {new Date(message.timestamp).toLocaleString()}
               </div>

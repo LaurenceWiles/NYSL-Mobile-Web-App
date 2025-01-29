@@ -32,7 +32,7 @@ export const GameDetails = () => {
             </div>
           </div>
         )}
-        <div className="game-details-buttons">
+        <div className="game-details-buttons d-flex justify-content-between">
           <Link to={{ pathname: `/game/messages/${gameId}` }}>
             <MessageButton />
           </Link>
