@@ -128,3 +128,11 @@ code {
 .photo-card {
   width: 18rem;
 }
+
+.gallery-div {
+  max-width: 915px;
+}
+
+.upload-picture-div {
+  margin-bottom: 5rem;
+}

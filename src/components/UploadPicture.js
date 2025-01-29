@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
 import { Form, Button, Alert } from "react-bootstrap";
@@ -42,38 +42,40 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
 
   return (
     <>
-      <h2 className="mt-5">Upload A Picture</h2>
-      <Form.Group controlId="formFile" className="mb-3">
-        <Form.Control
-          type="file"
-          accept="image/*"
-          capture="environment"
-          onChange={handleFileSelect}
-        />
-      </Form.Group>
-      {selectedImage && (
-        <div className="mt-3">
-          <h2>Selected Image:</h2>
-          <Image
-            src={URL.createObjectURL(selectedImage)}
-            alt="Selected"
-            fluid
+      <div className="upload-picture-div">
+        <h2 className="mt-5">Upload A Picture</h2>
+        <Form.Group controlId="formFile" className="mb-3">
+          <Form.Control
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={handleFileSelect}
           />
-        </div>
-      )}
-      {error && (
-        <Alert variant="danger" className="mt-3">
-          {error}
-        </Alert>
-      )}
-      <Button
-        variant="primary"
-        onClick={handleUpload}
-        disabled={!selectedImage || uploading}
-        className="mt-3"
-      >
-        {uploading ? "Uploading..." : "Post"}
-      </Button>
+        </Form.Group>
+        {selectedImage && (
+          <div className="mt-3">
+            <h2>Selected Image:</h2>
+            <Image
+              src={URL.createObjectURL(selectedImage)}
+              alt="Selected"
+              fluid
+            />
+          </div>
+        )}
+        {error && (
+          <Alert variant="danger" className="mt-3">
+            {error}
+          </Alert>
+        )}
+        <Button
+          variant="primary"
+          onClick={handleUpload}
+          disabled={!selectedImage || uploading}
+          className="mt-3"
+        >
+          {uploading ? "Uploading..." : "Post"}
+        </Button>
+      </div>
     </>
   );
 };

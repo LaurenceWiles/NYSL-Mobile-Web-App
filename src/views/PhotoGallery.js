@@ -54,14 +54,16 @@ export const PhotoGallery = () => {
   };
 
   return (
-    <Container>
-      {error && (
-        <Alert variant="danger" className="mt-3">
-          {error}
-        </Alert>
-      )}
-      <UploadPicture gameId={gameId} user={user} onUpload={handleUpload} />
-      <Gallery images={images} />
+    <Container className="text-center d-flex justify-content-center">
+      <div className="gallery-div">
+        {error && (
+          <Alert variant="danger" className="mt-3">
+            {error}
+          </Alert>
+        )}
+        <Gallery images={images} />
+        <UploadPicture gameId={gameId} user={user} onUpload={handleUpload} />
+      </div>
     </Container>
   );
 };
