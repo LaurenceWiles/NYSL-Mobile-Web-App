@@ -136,3 +136,7 @@ code {
 .upload-picture-div {
   margin-bottom: 5rem;
 }
+
+.selected-image-div {
+  max-width: 18rem;
+}

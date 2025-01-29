@@ -27,7 +27,6 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
           },
         };
         await uploadBytes(gameRef, selectedImage, metadata);
-        console.log("File uploaded successfully");
         const newImageUrl = await getDownloadURL(gameRef);
         const newImageMetadata = await getMetadata(gameRef);
         onUpload({ url: newImageUrl, metadata: newImageMetadata });
@@ -53,13 +52,16 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
           />
         </Form.Group>
         {selectedImage && (
-          <div className="mt-3">
+          <div className="mt-3 d-flex  align-items-center flex-column">
             <h2>Selected Image:</h2>
-            <Image
-              src={URL.createObjectURL(selectedImage)}
-              alt="Selected"
-              fluid
-            />
+            <div className="selected-image-div ">
+              <Image
+                src={URL.createObjectURL(selectedImage)}
+                alt="Selected"
+                fluid
+                className="selected-image-preview"
+              />
+            </div>
           </div>
         )}
         {error && (
