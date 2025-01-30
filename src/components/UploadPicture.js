@@ -41,6 +41,11 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
     }
   };
 
+  const handleCancel = () => {
+    setSelectedImage(null);
+    fileInputRef.current.value = "";
+  };
+
   return (
     <>
       <div className="upload-picture-div">
@@ -79,6 +84,13 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
           className="mt-3"
         >
           {uploading ? "Uploading..." : "Post"}
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={handleCancel}
+          className="mt-3 ms-2"
+        >
+          Cancel
         </Button>
       </div>
     </>
