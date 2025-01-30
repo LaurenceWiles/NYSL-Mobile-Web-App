@@ -38,7 +38,7 @@ export const PhotoGallery = () => {
         const urls = await Promise.all(urlsPromises);
         urls.sort(
           (a, b) =>
-            new Date(b.metadata.timeCreated) - new Date(a.metadata.timeCreated)
+            new Date(a.metadata.timeCreated) - new Date(b.metadata.timeCreated)
         );
 
         setImages(urls);
@@ -50,7 +50,7 @@ export const PhotoGallery = () => {
     fetchImages();
   }, [gameId]);
   const handleUpload = (newImage) => {
-    setImages([newImage, ...images]);
+    setImages([...images, newImage]);
   };
 
   return (
