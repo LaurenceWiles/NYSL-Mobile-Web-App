@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
 import { Form, Button, Alert } from "react-bootstrap";
@@ -9,6 +9,7 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
+  const fileInputRef = useRef(null);
 
   const handleFileSelect = (event) => {
     const selectedFile = event.target.files[0];
@@ -31,6 +32,7 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
         const newImageMetadata = await getMetadata(gameRef);
         onUpload({ url: newImageUrl, metadata: newImageMetadata });
         setSelectedImage(null);
+        fileInputRef.current.value = "";
       } catch (error) {
         console.error("Error uploading file:", error);
         setError("Error uploading file. Please try again.");
@@ -45,6 +47,7 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
         <h2 className="mt-5">Upload A Picture</h2>
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Control
+            ref={fileInputRef}
             type="file"
             accept="image/*"
             capture="environment"
@@ -52,7 +55,7 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
           />
         </Form.Group>
         {selectedImage && (
-          <div className="mt-3 d-flex  align-items-center flex-column">
+          <div className="mt-3 d-flex align-items-center flex-column">
             <h2>Selected Image:</h2>
             <div className="selected-image-div ">
               <Image
