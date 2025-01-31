@@ -44,33 +44,32 @@ export const Messages = () => {
       }
     });
     return () => unsubscribe();
-  }, [navigate]);
+  }, [navigate, gameId]);
 
-  if (loading) {
-    return (
-      <Container className="text-center messages-loading-container d-flex justify-content-center align-items-center">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </Container>
-    );
-  }
-
-  if (error) {
-    return (
-      <Container className="text-center mt-5">
-        <p className="text-danger">
-          <strong>Error:</strong> Unable to load messages. Please try again
-          later.
-        </p>
-      </Container>
-    );
-  }
   return (
     <div>
       <Container>
-        <ChatComponent messages={messagesState} />
-        <MessageInput />
+        {loading && (
+          <div className="text-center messages-loading-container d-flex justify-content-center align-items-center">
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        )}
+        {error && (
+          <div className="text-center mt-5">
+            <p className="text-danger">
+              <strong>Error:</strong> Unable to load messages. Please try again
+              later.
+            </p>
+          </div>
+        )}
+        {!loading && !error && (
+          <>
+            <ChatComponent messages={messagesState} />
+            <MessageInput />
+          </>
+        )}
       </Container>
     </div>
   );
