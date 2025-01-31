@@ -5,7 +5,7 @@ export const GamesTable = ({ jsonData }) => {
   const gamesData = Object.entries(jsonData.games) || [];
 
   return (
-    <div>
+    <div className="games-table-div">
       <Table striped bordered hover>
         <thead>
           <tr>

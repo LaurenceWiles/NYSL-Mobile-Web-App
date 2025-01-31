@@ -49,6 +49,11 @@ code {
   margin-bottom: 1rem;
 }
 
+.games-table-div {
+  max-width: 800px;
+  margin: 0 auto 0 auto;
+}
+
 .game-details-header {
   margin-top: 1rem;
 }

@@ -6,7 +6,10 @@ export const Schedule = () => {
   return (
     <div className="schedule-div">
       <Container>
-        <h2 className="text-center schedule-header">Games Schedule</h2>
+        <div className="text-center schedule-header">
+          <h2>Games Schedule</h2>
+          <p>Select a game to see location details and more...</p>
+        </div>
         <GamesTable jsonData={jsonData} />
       </Container>
     </div>
