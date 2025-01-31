@@ -1,9 +1,16 @@
 import { useState, useRef } from "react";
-import { ref, uploadBytes } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  getMetadata,
+} from "firebase/storage";
 import { storage } from "../firebase";
-import { Form, Button, Alert } from "react-bootstrap";
-import { getDownloadURL, getMetadata } from "firebase/storage";
-import Image from "react-bootstrap/Image";
+import { Alert } from "react-bootstrap";
+import FileInput from "./FileInput";
+import ImagePreview from "./ImagePreview";
+import PostButton from "./PostButton";
+import CancelButton from "./CancelButton";
 
 const UploadPicture = ({ gameId, user, onUpload }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -32,7 +39,7 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
         const newImageMetadata = await getMetadata(gameRef);
         onUpload({ url: newImageUrl, metadata: newImageMetadata });
         setSelectedImage(null);
-        fileInputRef.current.value = "";
+        if (fileInputRef.current) fileInputRef.current.value = "";
       } catch (error) {
         console.error("Error uploading file:", error);
         setError("Error uploading file. Please try again.");
@@ -50,48 +57,22 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
     <>
       <div className="upload-picture-div">
         <h2 className="mt-5">Upload A Picture</h2>
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Control
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            onChange={handleFileSelect}
-          />
-        </Form.Group>
-        {selectedImage && (
-          <div className="mt-3 d-flex align-items-center flex-column">
-            <h2>Selected Image:</h2>
-            <div className="selected-image-div ">
-              <Image
-                src={URL.createObjectURL(selectedImage)}
-                alt="Selected"
-                fluid
-                className="selected-image-preview"
-              />
-            </div>
-          </div>
-        )}
+        <FileInput
+          fileInputRef={fileInputRef}
+          onFileSelect={handleFileSelect}
+        />
+        <ImagePreview selectedImage={selectedImage} onCancel={handleCancel} />
         {error && (
           <Alert variant="danger" className="mt-3">
             {error}
           </Alert>
         )}
-        <Button
-          variant="primary"
+        <PostButton
           onClick={handleUpload}
+          uploading={uploading}
           disabled={!selectedImage || uploading}
-          className="mt-3"
-        >
-          {uploading ? "Uploading..." : "Post"}
-        </Button>
-        <Button
-          variant="secondary"
-          onClick={handleCancel}
-          className="mt-3 ms-2"
-        >
-          Cancel
-        </Button>
+        />
+        <CancelButton onClick={handleCancel} />
       </div>
     </>
   );
