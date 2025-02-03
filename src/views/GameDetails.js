@@ -2,8 +2,7 @@ import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import jsonData from "../utils/games.json";
-import { MessageButton } from "../components/MessageButton";
-import { GalleryButton } from "../components/GalleryButton";
+import { AuthButton } from "../components/AuthButton";
 
 export const GameDetails = () => {
   const { gameId } = useParams();
@@ -34,10 +33,10 @@ export const GameDetails = () => {
         )}
         <div className="game-details-buttons d-flex justify-content-between">
           <Link to={{ pathname: `/game/messages/${gameId}` }}>
-            <MessageButton />
+            <AuthButton text="Message Board" />
           </Link>
           <Link to={{ pathname: `/game/photos/${gameId}` }}>
-            <GalleryButton />
+            <AuthButton text="Photo Gallery" />
           </Link>
         </div>
       </Container>

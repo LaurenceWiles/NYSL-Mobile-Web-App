@@ -18,7 +18,6 @@ export const Messages = () => {
   const [messagesState, setMessagesState] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onValue(
@@ -37,9 +36,7 @@ export const Messages = () => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-      } else {
+      if (!user) {
         navigate(`/game/${gameId}`);
       }
     });
