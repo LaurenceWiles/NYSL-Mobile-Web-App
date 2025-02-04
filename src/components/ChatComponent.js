@@ -1,23 +1,10 @@
-import { useRef, useLayoutEffect } from "react";
 import { Container } from "react-bootstrap";
+import { useSortedMessages } from "../hooks/useSortedMessages";
+import { useAutoScroll } from "../hooks/useAutoScroll";
 
 export const ChatComponent = ({ messages }) => {
-  const messageList = messages ? Object.values(messages) : [];
-
-  const sortedMessages = messageList.sort((a, b) => {
-    const timestampA = a.timestamp;
-    const timestampB = b.timestamp;
-    return timestampA - timestampB;
-  });
-
-  const chatContainerRef = useRef(null);
-
-  useLayoutEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
-    }
-  }, [messages]);
+  const sortedMessages = useSortedMessages(messages);
+  const chatContainerRef = useAutoScroll(sortedMessages);
 
   return (
     <Container>

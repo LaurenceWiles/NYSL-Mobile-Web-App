@@ -10,23 +10,25 @@ export const MessageInput = () => {
   const userEmail = useAuthUser();
   const { gameId } = useParams();
 
-  const handleMessageSubmit = (e) => {
+  const handleMessageSubmit = async (e) => {
     e.preventDefault();
-    const db = getDatabase();
-    const messagesRef = ref(db, `messages/${gameId}`);
-    const timestamp = new Date().getTime();
-    const messageData = {
-      author: userEmail,
-      text: message,
-      timestamp: timestamp,
-    };
-    push(messagesRef, messageData)
-      .then(() => {
-        setMessage("");
-      })
-      .catch((error) => {
-        console.error("Error adding message: ", error);
+    if (!message.trim()) return;
+
+    try {
+      const db = getDatabase();
+      const messagesRef = ref(db, `messages/${gameId}`);
+      const timestamp = Date.now();
+
+      await push(messagesRef, {
+        author: userEmail,
+        text: message,
+        timestamp,
       });
+
+      setMessage("");
+    } catch (error) {
+      console.error("Error adding message: ", error);
+    }
   };
 
   return (
