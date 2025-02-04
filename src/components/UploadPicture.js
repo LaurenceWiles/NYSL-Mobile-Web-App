@@ -1,6 +1,6 @@
 import { Alert } from "react-bootstrap";
 import useImageUpload from "../hooks/useImageUpload";
-import useFileSelection from "../hooks/useFilesSelection";
+import useFileSelection from "../hooks/useFileSelection";
 import FileInput from "./FileInput";
 import ImagePreview from "./ImagePreview";
 import PostButton from "./PostButton";
