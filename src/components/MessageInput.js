@@ -1,22 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { BsArrowRight } from "react-icons/bs";
-import { getAuth } from "firebase/auth";
 import { getDatabase, ref, push } from "firebase/database";
 import { useParams } from "react-router-dom";
+import useAuthUser from "../hooks/useAuthUser";
 
 export const MessageInput = () => {
   const [message, setMessage] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const userEmail = useAuthUser();
   const { gameId } = useParams();
-
-  useEffect(() => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (user) {
-      setUserEmail(user.email);
-    }
-  }, []);
 
   const handleMessageSubmit = (e) => {
     e.preventDefault();
