@@ -10,11 +10,13 @@ const Gallery = ({ images }) => {
             <Card.Img variant="top" src={image.url} />
             <Card.Body>
               <Card.Text>
-                Uploaded by: {image.metadata.customMetadata.user}
+                Uploaded by: {image.metadata?.customMetadata?.user || "Unknown"}
               </Card.Text>
               <Card.Text>
                 Uploaded at:{" "}
-                {new Date(image.metadata.timeCreated).toLocaleString()}
+                {image.metadata?.timeCreated
+                  ? new Date(image.metadata.timeCreated).toLocaleString()
+                  : "Unknown"}
               </Card.Text>
             </Card.Body>
           </Card>

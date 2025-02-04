@@ -1,29 +1,19 @@
-import { useState, useRef } from "react";
 import { Alert } from "react-bootstrap";
-import useUpload from "../hooks/useUpload";
+import useImageUpload from "../hooks/useImageUpload";
+import useFileSelection from "../hooks/useFilesSelection";
 import FileInput from "./FileInput";
 import ImagePreview from "./ImagePreview";
 import PostButton from "./PostButton";
 import CancelButton from "./CancelButton";
 
 const UploadPicture = ({ gameId, user, onUpload }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const fileInputRef = useRef(null);
-
-  const { uploadImage, uploading, error } = useUpload(gameId, user, onUpload);
-
-  const handleUpload = () => {
-    uploadImage(selectedImage, resetFileInput);
-  };
-
-  const handleCancel = () => {
-    resetFileInput();
-  };
-
-  const resetFileInput = () => {
-    setSelectedImage(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
+  const { selectedImage, setSelectedImage, fileInputRef, resetFileInput } =
+    useFileSelection();
+  const { uploadImage, uploading, error } = useImageUpload(
+    gameId,
+    user,
+    onUpload
+  );
 
   return (
     <>
@@ -33,18 +23,18 @@ const UploadPicture = ({ gameId, user, onUpload }) => {
           fileInputRef={fileInputRef}
           setSelectedImage={setSelectedImage}
         />
-        <ImagePreview selectedImage={selectedImage} onCancel={handleCancel} />
+        <ImagePreview selectedImage={selectedImage} onCancel={resetFileInput} />
         {error && (
           <Alert variant="danger" className="mt-3">
             {error}
           </Alert>
         )}
         <PostButton
-          onClick={handleUpload}
+          onClick={() => uploadImage(selectedImage, resetFileInput)}
           uploading={uploading}
           disabled={!selectedImage || uploading}
         />
-        <CancelButton onClick={handleCancel} />
+        <CancelButton onClick={resetFileInput} />
       </div>
     </>
   );
