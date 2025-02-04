@@ -9,11 +9,7 @@ export const useAuthRedirect = () => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        navigate(`/game/${gameId}`);
-      }
+      user ? setUser(user) : navigate(`/game/${gameId}`);
     });
 
     return () => unsubscribe();

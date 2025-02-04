@@ -1,10 +1,11 @@
-import { useEffect, useState, useMemo } from "react";
+import { useMemo } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref } from "firebase/database";
 import { MessageInput } from "../components/MessageInput";
 import { ChatComponent } from "../components/ChatComponent";
 import { useAuthRedirect } from "../hooks/useAuthRedirect";
+import useMessages from "../hooks/useMessages";
 
 export const Messages = () => {
   const { gameId } = useParams();
@@ -15,24 +16,7 @@ export const Messages = () => {
     [db, gameId]
   );
 
-  const [messagesState, setMessagesState] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = onValue(
-      messagesRef,
-      (snapshot) => {
-        setMessagesState(snapshot.val());
-        setLoading(false);
-      },
-      (error) => {
-        setError(error);
-        setLoading(false);
-      }
-    );
-    return unsubscribe;
-  }, [messagesRef]);
+  const { messagesState, loading, error } = useMessages(messagesRef);
 
   return (
     <Container>
