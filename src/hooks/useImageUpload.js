@@ -5,7 +5,7 @@ import {
   getDownloadURL,
   getMetadata,
 } from "firebase/storage";
-import { storage } from "../firebase";
+import { storage } from "../config/firebase";
 
 const useImageUpload = (gameId, user, onUpload) => {
   const [uploading, setUploading] = useState(false);

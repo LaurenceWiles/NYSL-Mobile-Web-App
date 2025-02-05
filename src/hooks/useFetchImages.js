@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { storage } from "../firebase";
+import { storage } from "../config/firebase";
 import { ref, getDownloadURL, listAll, getMetadata } from "firebase/storage";
 
 export const useFetchImages = (gameId) => {

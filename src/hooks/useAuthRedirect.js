@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth } from "../config/firebase";
 
 export const useAuthRedirect = () => {
   const { gameId } = useParams();

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { auth, provider } from "../firebase";
+import { auth, provider } from "../config/firebase";
 import { signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
 
 const useAuth = () => {

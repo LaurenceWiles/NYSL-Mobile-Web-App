@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { auth } from "../firebase";
+import { auth } from "../config/firebase";
 
 export const AuthButton = ({ text }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
