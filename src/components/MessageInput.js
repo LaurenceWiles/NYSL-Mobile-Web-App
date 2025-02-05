@@ -1,38 +1,27 @@
 import { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { BsArrowRight } from "react-icons/bs";
-import { getDatabase, ref, push } from "firebase/database";
 import { useParams } from "react-router-dom";
 import useAuthUser from "../hooks/useAuthUser";
+import useSubmitMessage from "../hooks/useSubmitMessage";
 
 export const MessageInput = () => {
   const [message, setMessage] = useState("");
   const userEmail = useAuthUser();
   const { gameId } = useParams();
 
-  const handleMessageSubmit = async (e) => {
+  const { submitMessage, isSending, error } = useSubmitMessage(
+    gameId,
+    userEmail
+  );
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (!message.trim()) return;
-
-    try {
-      const db = getDatabase();
-      const messagesRef = ref(db, `messages/${gameId}`);
-      const timestamp = Date.now();
-
-      await push(messagesRef, {
-        author: userEmail,
-        text: message,
-        timestamp,
-      });
-
-      setMessage("");
-    } catch (error) {
-      console.error("Error adding message: ", error);
-    }
+    submitMessage(message, () => setMessage(""));
   };
 
   return (
-    <Form onSubmit={handleMessageSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Container className="mb-3">
         <div className="message-input-div">
           <Form.Group
@@ -45,16 +34,19 @@ export const MessageInput = () => {
               className="flex-grow-1"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              disabled={isSending}
             />
             <Button
               variant="primary"
               type="submit"
               className="btn-circle custom-btn-circle d-flex justify-content-center align-items-center ms-1"
+              disabled={isSending || !message.trim()}
             >
               <BsArrowRight />
             </Button>
           </Form.Group>
         </div>
+        {error && <p className="text-danger mt-2">{error}</p>}
       </Container>
     </Form>
   );
