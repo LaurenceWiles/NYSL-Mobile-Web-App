@@ -7,8 +7,8 @@ import { NavHeader } from "./components/NavHeader";
 import { GameDetails } from "./views/GameDetails";
 import { SignIn } from "./components/SignIn";
 import { Messages } from "./views/Messages";
-import { AuthProvider } from "./AuthContext";
 import { PhotoGallery } from "./views/PhotoGallery";
+import { AuthProvider } from "./context/AuthContext";
 
 const App = () => {
   const [navbarExpanded, setNavbarExpanded] = useState(false);
