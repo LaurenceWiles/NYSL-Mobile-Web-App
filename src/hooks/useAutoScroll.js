@@ -1,13 +1,15 @@
 import { useLayoutEffect, useRef } from "react";
 
-export const useAutoScroll = (dependency) => {
+export const useAutoScroll = (dependency, mode) => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
     if (ref.current) {
-      ref.current.scrollTop = ref.current.scrollHeight;
+      mode === "scrollIntoView"
+        ? ref.current.scrollIntoView({ behavior: "smooth", block: "end" })
+        : (ref.current.scrollTop = ref.current.scrollHeight);
     }
-  }, [dependency]);
+  }, [dependency, mode]);
 
   return ref;
 };

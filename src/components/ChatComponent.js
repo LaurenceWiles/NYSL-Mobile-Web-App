@@ -4,7 +4,7 @@ import { useAutoScroll } from "../hooks/useAutoScroll";
 
 export const ChatComponent = ({ messages }) => {
   const sortedMessages = useSortedMessages(messages);
-  const chatContainerRef = useAutoScroll(sortedMessages);
+  const chatContainerRef = useAutoScroll(sortedMessages, "scrollTop");
 
   return (
     <Container>
