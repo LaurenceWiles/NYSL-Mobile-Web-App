@@ -1,16 +1,30 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { auth } from "../config/firebase";
 
-export const AuthButton = ({ text }) => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+export const AuthButton = ({ text, disabledMessage }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setLoggedIn(!!user);
+      setIsLoggedIn(!!user);
     });
     return () => unsubscribe();
   }, []);
 
-  return <div>{isLoggedIn && <Button>{text}</Button>}</div>;
+  return (
+    <OverlayTrigger
+      placement="top"
+      overlay={!isLoggedIn ? <Tooltip>{disabledMessage}</Tooltip> : <></>}
+    >
+      <span className="d-inline-block">
+        <Button
+          disabled={!isLoggedIn}
+          style={{ pointerEvents: !isLoggedIn ? "auto" : "inherit" }}
+        >
+          {text}
+        </Button>
+      </span>
+    </OverlayTrigger>
+  );
 };

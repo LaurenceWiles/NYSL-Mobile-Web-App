@@ -33,10 +33,16 @@ export const GameDetails = () => {
         )}
         <div className="game-details-buttons d-flex justify-content-between">
           <Link to={{ pathname: `/game/messages/${gameId}` }}>
-            <AuthButton text="Message Board" />
+            <AuthButton
+              text="Message Board"
+              disabledMessage="Please sign in to access message board"
+            />
           </Link>
           <Link to={{ pathname: `/game/photos/${gameId}` }}>
-            <AuthButton text="Photo Gallery" />
+            <AuthButton
+              text="Photo Gallery"
+              disabledMessage="Please sign in to access photo gallery"
+            />
           </Link>
         </div>
       </Container>
