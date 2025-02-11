@@ -18,6 +18,7 @@ export const PhotoGallery = () => {
             {error}
           </Alert>
         )}
+
         <Gallery images={images} />
         <UploadPicture gameId={gameId} user={user} onUpload={addImage} />
       </div>
