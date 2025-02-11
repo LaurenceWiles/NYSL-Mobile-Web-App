@@ -145,3 +145,11 @@ code {
 .selected-image-div {
   max-width: 18rem;
 }
+
+.footer {
+  background-color: #e0e0e0;
+  padding: 0.5rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

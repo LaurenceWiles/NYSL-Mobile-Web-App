@@ -9,6 +9,7 @@ import { SignIn } from "./components/SignIn";
 import { Messages } from "./views/Messages";
 import { PhotoGallery } from "./views/PhotoGallery";
 import { AuthProvider } from "./context/AuthContext";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [navbarExpanded, setNavbarExpanded] = useState(false);
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/signin" element={<SignIn />} />
           </Routes>
         </div>
+        <Footer />
       </div>
     </AuthProvider>
   );
