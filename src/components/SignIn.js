@@ -8,8 +8,9 @@ export const SignIn = () => {
 
   const buttonProps = {
     variant: "secondary",
-    className: isSmallScreen ? "btn-sm" : "",
+    className: `btn ${isSmallScreen ? "btn-sm" : ""}`,
     onClick: isSignedIn ? logOut : signInWithGoogle,
+    style: isSmallScreen ? { maxWidth: "75px" } : {},
   };
 
   return <Button {...buttonProps}>{isSignedIn ? "Log Out" : "Sign In"}</Button>;
