@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <div>
+      <div className="main-wrapper">
         <NavHeader onNavbarToggle={handleNavbarToggle} />
         <div className={`content ${navbarExpanded ? "expanded" : ""}`}>
           <Routes>
